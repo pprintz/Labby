@@ -13,6 +13,8 @@ import { ConfigService } from './config/config.service';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.mongoUri,
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
       }),
       inject: [ConfigService],
     }),

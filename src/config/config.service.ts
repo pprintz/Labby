@@ -37,6 +37,6 @@ export class ConfigService {
   }
 
   get mongoUri(): string {
-    return String(this.envConfig.DBURI);
+    return String(this.envConfig.MONGO_URI);
   }
 }

@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-interface Move extends Document {
+export interface Move extends Document {
   command: string[];
   hitLevel: string[];
   damage: string[];
