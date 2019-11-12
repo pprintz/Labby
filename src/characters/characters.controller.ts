@@ -13,7 +13,7 @@ export class CharactersController {
   @Get()
   async getAllCharacterDescriptions(): Promise<string[]> {
     const chars = await this.charactersService.findAll();
-    const toDescription = (char: Character) =>
+    const toDescription = (char: Character): CharacterDescriptionDto =>
       char.name;
     return chars.map(toDescription);
   }

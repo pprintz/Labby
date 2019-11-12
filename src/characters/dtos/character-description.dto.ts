@@ -1,3 +1,1 @@
-export class CharacterDescriptionDto {
-  constructor(readonly name: string) {}
-}
+export type CharacterDescriptionDto = string;
