@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 
 import { CharacterDescriptionDto } from './dtos/character-description.dto';
 import { CharactersService } from './characters.service';
@@ -11,10 +11,10 @@ import { CharacterDto } from './dtos/character.dto';
 export class CharactersController {
   constructor(private readonly charactersService: CharactersService) {}
   @Get()
-  async getAllCharacterDescriptions(): Promise<CharacterDescriptionDto[]> {
+  async getAllCharacterDescriptions(): Promise<string[]> {
     const chars = await this.charactersService.findAll();
     const toDescription = (char: Character) =>
-      new CharacterDescriptionDto(char.name);
+      char.name;
     return chars.map(toDescription);
   }
   @Get(':name')

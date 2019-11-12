@@ -1,9 +1,11 @@
 import { Document } from 'mongoose';
 
-export interface Move extends Document {
+export interface PersistentMove extends Move, Document { }
+
+export interface Move {
   command: string[];
   hitLevel: string[];
-  damage: string[];
+  damage: number[];
   startUpFrame: string[];
   blockFrame: string;
   hitFrame: string;
@@ -11,7 +13,10 @@ export interface Move extends Document {
   notes: string[];
 }
 
-export interface Character extends Document {
+export interface Character {
   name: string;
   moves: Move[];
+  basicMoves: Move[];
 }
+
+export interface PersistentCharacter extends Character, Document { }

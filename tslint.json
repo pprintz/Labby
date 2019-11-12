@@ -4,6 +4,7 @@
   "jsRules": {
     "no-unused-expression": true
   },
+  "exclude": ["src/characters/crawler"],
   "rules": {
     "quotemark": [true, "single"],
     "member-access": [false],

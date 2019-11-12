@@ -6,9 +6,9 @@ const MoveSchema = new mongoose.Schema(
     hitLevel: [String],
     damage: [Number],
     startUpFrame: [String],
-    blockFrame: Number,
-    hitFrame: Number,
-    chFrame: Number,
+    blockFrame: String,
+    hitFrame: String,
+    chFrame: String,
     notes: [String],
   },
   { _id: false },
@@ -17,4 +17,5 @@ const MoveSchema = new mongoose.Schema(
 export const CharacterSchema = new mongoose.Schema({
   name: String,
   moves: [MoveSchema],
+  basicMoves: [MoveSchema],
 });
