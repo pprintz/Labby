@@ -1,3 +1,7 @@
 # Labby
 
-[![CircleCI](https://circleci.com/gh/pprintz/Labby/tree/master.svg?style=svg)](https://circleci.com/gh/pprintz/Labby/tree/master)
+Frame data with a twist.
+
+# Features
+
+Sorting, filtering, and crowd reviewing of counters to moves.
