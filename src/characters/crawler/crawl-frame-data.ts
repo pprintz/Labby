@@ -1,8 +1,9 @@
 import Crawler = require('crawler');
-import { Move, Character } from '../interfaces/character.interface';
 import * as mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-import { CharacterSchema } from '../schemas/characters.schema';
+import { Character } from '../entities/character';
+import { getModelForClass } from '@typegoose/typegoose';
+import { Move } from '../entities/move';
 
 const result = dotenv.config({ path: 'development.env' });
 
@@ -18,7 +19,7 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  const charModel = mongoose.model('Character', CharacterSchema);
+  const charModel = getModelForClass(Character);
 
   // Setup crawler - Setup callbacks
   const c = new Crawler({

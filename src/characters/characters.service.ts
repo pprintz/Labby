@@ -1,23 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-
-import {
-  Character,
-  PersistentCharacter,
-} from './interfaces/character.interface';
+import { InjectModel } from 'nestjs-typegoose';
+import { ReturnModelType } from '@typegoose/typegoose';
+import { Character } from './entities/character';
 
 @Injectable()
 export class CharactersService {
   constructor(
-    @InjectModel('Character')
-    private readonly characterModel: Model<PersistentCharacter>,
+    @InjectModel(Character)
+    private readonly characterModel: ReturnModelType<typeof Character>,
   ) {}
 
-  async findAll(): Promise<Character[]> {
+  async findAllCharacters(): Promise<Character[]> {
     return await this.characterModel.find().exec();
   }
-  async find(charName: string): Promise<Character> {
+  async findAllCharacterDescriptions(): Promise<Character[]> {
+    return await this.characterModel
+      .find()
+      .select('name')
+      .exec();
+  }
+  async findCharacter(charName: string): Promise<Character> {
     return await this.characterModel.findOne({ name: charName }).exec();
   }
 }

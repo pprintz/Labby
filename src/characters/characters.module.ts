@@ -1,15 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 
 import { CharactersService } from './characters.service';
-import { CharacterSchema } from './schemas/characters.schema';
-import { CharactersController } from './characters.controller';
+import { CharactersResolver } from './characters.resolver';
+import { TypegooseModule } from 'nestjs-typegoose';
+import { Character } from './entities/character';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: 'Character', schema: CharacterSchema }]),
-  ],
-  providers: [CharactersService],
-  controllers: [CharactersController],
+  imports: [TypegooseModule.forFeature([Character])],
+  providers: [CharactersService, CharactersResolver],
 })
 export class CharactersModule {}
